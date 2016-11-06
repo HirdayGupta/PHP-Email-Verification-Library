@@ -20,7 +20,10 @@ if(!$_POST['submit'])
   die(""); //this script should run only if user has submitted the form.
 
 include('settings.php');
-require $PHPMailerAutoloadPath; //importing PHPMailer package.
+if($PHPMailerAutoloadPath)
+  require $PHPMailerAutoloadPath; //importing PHPMailer package.
+else
+  require 'phpmailer/PHPMailerAutoload.php';
 
 $link =  mysqli_connect($databaseIP,$databaseUsername,$databasePassword,$databaseUsername);
 if(mysqli_connect_error())  {
