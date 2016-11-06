@@ -35,7 +35,8 @@ $email = $_POST['email'];
 $password = md5(md5($email).mysqli_real_escape_string($link, $_POST['password'])); //hashed password with email ID as salt
 $confirmation = getToken(32); //generating 32 bit confirmation hash
 $status = "unverified";
-//new fields can be added here, and appended to the insert query.
+
+//more input fields can be added here, and appended to the following mySQL insert query.
 
 $query = "INSERT INTO `".$tableName."` (`".$emailColumnName."`,`".$passwordColumnName."`,`".$confirmationHashColumnName."`,`".$verificationStatusColumnName."`) VALUES('".$email."','".$password."','".$confirmation."','".$status."')";
 if(mysqli_query($link,$query)){
